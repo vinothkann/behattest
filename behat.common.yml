@@ -1,0 +1,48 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext:
+            parameters:
+              screenshot_dir: %paths.base%/screenshots
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  formatters:
+    pretty:
+      paths: false
+    html:
+      output_path: %paths.base%/build/html/behat
+  extensions:
+    Behat\MinkExtension:
+      files_path: "assets"
+      goutte:
+        guzzle_parameters:
+          verify: false
+      selenium2: ~
+    Drupal\DrupalExtension:
+      blackbox: ~
+      drush: ~
+      api_driver: "drupal"
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+      name: html
+      renderer: Twig,Behat2
+      file_name: index
+      print_args: true
+      print_outp: true
+      loop_break: true
+
+docker:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://web.jjfusion.docker
+      files_path: /var/www/tests/code/assets
+      browser_name: firefox
+      selenium2:
+        wd_host: http://browser.jjfusion.docker:4444/wd/hub
+    Drupal\DrupalExtension:
+      drupal:
+        drupal_root: /var/www/docroot
+      drush:
+        root: /var/www/docroot
+        alias: 'fusion-sitename'

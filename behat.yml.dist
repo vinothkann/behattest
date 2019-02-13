@@ -1,0 +1,14 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://drupal-7-61.dd:8083/
+      selenium2:
+        wd_host: http://127.0.0.1:4444/wd/hub
+    Drupal\DrupalExtension:
+      drupal:
+        drupal_root: '/Users/01hw1023453/Sites/devdesktop/drupal-7.61'
+      drush:
+        alias: 'loc.drupal-7-61'
+
+imports:
+  - behat.common.yml
