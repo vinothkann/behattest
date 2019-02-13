@@ -2,7 +2,7 @@
 <delete dir="${basedir}/report" />
 <mkdir dir="${basedir}/report"/>
 <target name="behat">
-<exec dir="/Users/01hw1023453/Sites/devdesktop/behat/bin" executable="behat" failonerror="true">
+<exec dir="/Users/01hw1023453/Sites/devdesktop/behat" executable="bin/behat" failonerror="true">
 <arg line="-f junit --out ${basedir}/report"/>
 </exec>
 </target>
