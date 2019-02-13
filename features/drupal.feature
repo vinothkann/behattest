@@ -7,5 +7,5 @@ Feature: Drupal test behat
 
     Examples:
       | url                  | title                        |
-      | home                 | Home                         |
+      | home                 | Home123                      |
  
